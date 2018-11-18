@@ -1,36 +1,25 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml"; // to tell MVC we want to use a layout page, we need to set the path of this view
+    ViewBag.Title = "Comic Book Detail";
 
 }
 
-<!DOCTYPE html>
+<h1>@ViewBag.seriesTitle</h1>
+<h2>Issue #@ViewBag.IssueNumber</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
+<h5>Description:</h5>
+<div>@Html.Raw(ViewBag.Description)</div>
+
+@if (ViewBag.artists.Length > 0)
+{
+    <h5>Artists:</h5>
     <div>
-        <h1>@ViewBag.seriesTitle</h1>
-        <h2>Issue #@ViewBag.IssueNumber</h2>
-
-        <h5>Description:</h5>
-        <div>@Html.Raw(ViewBag.Description)</div>
-
-        @if (ViewBag.artists.Length > 0)
-        {
-            <h5>Artists:</h5>
-            <div>
-                <ul>
-                    @foreach (var artist in ViewBag.Artists)
-                    {
-                        <li>@artist</li> <!--allows us to let razor know to switch from writing code to text content-->
-                    }
-                </ul>
-            </div>
-        }
-
+        <ul>
+            @foreach (var artist in ViewBag.Artists)
+            {
+                <li>@artist</li> <!--allows us to let razor know to switch from writing code to text content-->
+            }
+        </ul>
     </div>
-</body>
-</html>
+}
+
