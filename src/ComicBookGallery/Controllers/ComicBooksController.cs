@@ -17,6 +17,12 @@ namespace ComicBookGallery.Controllers
             _comicBookRepository = new ComicBookRepository();
         }
 
+        public ActionResult Index()
+        {
+            var comicBooks = _comicBookRepository.GetComicBooks();
+            return View(comicBooks); // passing a comicBooks array into the View method will make our array via the Views @Model property
+        }
+
         public ActionResult Detail(int? id)
         {
             if(id == null)
