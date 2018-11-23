@@ -11,8 +11,10 @@
     {
         <div class="col-md-3">
             <!--occupies 3 of the 12 grid columns-->
-            <h4>@comicBook.DisplayText</h4>
-            <img src="~/Images/@comicBook.CoverImageFileName" alt="@comicBook.DisplayText" class="img-responsive" />
+            <h4>@Html.ActionLink(comicBook.DisplayText, "Detail", new { id = comicBook.Id })</h4><!--The syntax for the routeValues object is defined as an anonymous type using object initializer syntax -->
+            <a href="@Url.Action("Detail",new { id = comicBook.Id })">
+                <img src="~/Images/@comicBook.CoverImageFileName" alt="@comicBook.DisplayText" class="img-responsive" 
+            </a>
         </div>
     }
 </div>
